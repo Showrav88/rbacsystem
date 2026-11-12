@@ -12,6 +12,9 @@ export function createApp() {
   app.use(cors({ origin: env.corsOrigin }));
   app.use(express.json());
 
+  app.get('/', (req, res) => {
+    res.json({ name: 'Secure Notes API', status: 'running', health: '/api/health' });
+  });
   app.use('/api/health', healthRoutes);
 
   app.use(handleRouteNotFound);
